@@ -1,6 +1,6 @@
 ---
 title: "Alcohol vs Seat choice"
-author: "Your Name"
+author: "Shaun ikeuchi"
 date: "Fall 2020"
 output: html_document
 ---
@@ -16,7 +16,21 @@ davisdata <- read.csv(file="UCDavis.csv")
 ```
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
+ 
+Data are from the UCDavis.csv
+Is the average amount of alcohol consumer per week different for the different seating rows?
 
+Null Hypothesis: There is no difference in the average amount of alcohol consumer per week based on seating row
+
+Alternative Hypothesis: There is a difference in the average amount of alcohol consumed per week based on seating row. 
+
+#Methods
+We predict alcohol consumption based on row. 
+
+alcohol ~ Seat
+Alcohol is a numeric variable
+Seat is a categorical variable.
+So we use the numerical categorical variable.
 ## Now with ggplot - first select the basic data
 
 ```{r}
