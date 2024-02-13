@@ -30,11 +30,12 @@ We predict alcohol consumption based on row.
 alcohol ~ Seat
 Alcohol is a numeric variable
 Seat is a categorical variable.
-So we use the numerical categorical variable.
+So we use the numerical categorical helper file.
 ## Now with ggplot - first select the basic data
 
 ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
+
 ```
 ## Now add in boxplot
 
