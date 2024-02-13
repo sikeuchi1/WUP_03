@@ -22,7 +22,7 @@ Is the average amount of alcohol consumer per week different for the different s
 
 Null Hypothesis: There is no difference in the average amount of alcohol consumer per week based on seating row
 
-Alternative Hypothesis: There is a difference in the average amount of alcohol consumed per week based on seating row. 
+Alternative Hypothesis: There is a difference in the average amount of alcohol consumed per week based on seating row
 
 #Methods
 We predict alcohol consumption based on row. 
@@ -49,11 +49,34 @@ basicCN + geom_boxplot()
 ```{r}
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
+ 
+The box plot shows that people sitting in the back row drank more alcohol compared to the front and middle rows.
+ 
+### Numerical Descriptive Results
 
-## Numerical Summarys 
+<!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
-## Inferential Tests
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
+This table shows that the mean number back seat people drinking alcohol (9.625) is greater than mean number of front and back people (1.8 and 3.28).
+ 
+## Inferential Results
 
+<!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+  
+ Since the p-value is 0.000116 which is less than 0.05, we reject the null hypothesis. This means that students in all the rows do not consume the same amount of alcohol. 
+  
+```{r}
+plot(TukeyHSD(model1))
+```
+ 
+There is more significant difference in the mean levels of the front-back seated people consuming alcohol compared to the alcohol consumption in the middle-front.
+ 
 ## Conclusions
 
-
+ Our original question was whether there was significant variance among alcohol consumption based on seating row. According to boxplot, the interquartile range of alcohol consumption in the back row is much larger with the 75th percentile much higher compared to the front and middle rows. Furthermore, the mean values of back seat people is much more significant in the back row compared to the front and middle row. In addition, according to the annova test, the p-value is less than 0.5, indicating that we can reject the null hypothesis. Finally, using the HSD test, we found that their was a significant difference between the means of front-back and front-middle pairs, further affiriming that there is a difference in the average amount of alcohol consumed per week based on seating row.
